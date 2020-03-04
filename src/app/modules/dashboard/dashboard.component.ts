@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+//import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 export interface PeriodicElement {
   name: string;
@@ -43,9 +45,9 @@ export class DashboardComponent implements OnInit {
   pieChart = [];
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+ // dataSource = new MatTableModule<PeriodicElement>(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginatorModule, { static: true }) paginator: MatPaginatorModule;
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -54,7 +56,7 @@ export class DashboardComponent implements OnInit {
     this.cards = this.dashboardService.cards();
     this.pieChart = this.dashboardService.pieChart();
 
-    this.dataSource.paginator = this.paginator;
+   // this.dataSource.paginator = this.paginator;
   }
 
 }
